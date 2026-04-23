@@ -76,6 +76,66 @@
       if (social[3] && c.ig)  social[3].href = c.ig;
     }
 
+
+    // ── TICKER ──
+    var ticker = loadJSON("/_data/ticker.json");
+    if (ticker && ticker.items && ticker.items.length) {
+      var track = document.querySelector(".ticker__track");
+      if (track) {
+        var items = ticker.items;
+        // duplicate for seamless loop
+        var all = [...items, ...items];
+        track.innerHTML = all.map(function(item) {
+          return '<span>' + item + '</span><span>●</span>';
+        }).join('');
+      }
+    }
+
+    // ── LINKS: agency cards ──
+    var links = loadJSON("/_data/links.json");
+    if (links && links.agency_links) {
+      links.agency_links.forEach(function(ag) {
+        if (ag.url) {
+          var card = document.querySelector('.card[data-id="' + ag.id + '"]');
+          if (card) card.href = ag.url;
+        }
+      });
+    }
+
+    // ── FORM: set mailto action ──
+    if (links && links.form_email) {
+      var form = document.getElementById("contactForm");
+      if (form) {
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          var name = form.querySelector('[name="name"]').value;
+          var contact = form.querySelector('[name="contact"]').value;
+          var company = form.querySelector('[name="company"]').value;
+          var brief = form.querySelector('[name="brief"]').value;
+          if (!name || !contact) {
+            document.getElementById("formStatus").textContent = "Заполните имя и контакт";
+            return;
+          }
+          var subject = encodeURIComponent("Бриф от " + name + (company ? " (" + company + ")" : ""));
+          var body = encodeURIComponent("Имя: " + name + "\nКомпания: " + company + "\nКонтакт: " + contact + "\n\nЗадача:\n" + brief);
+          window.location.href = "mailto:" + links.form_email + "?subject=" + subject + "&body=" + body;
+          document.getElementById("formStatus").textContent = "Открываем почтовый клиент...";
+          document.getElementById("formStatus").classList.add("is-ok");
+        }, true); // capture phase to override main.js handler
+      }
+    }
+
+    // ── TYPOGRAPHY ──
+    var typo = loadJSON("/_data/typography.json");
+    if (typo) {
+      var root = document.documentElement.style;
+      if (typo.color_bg) root.setProperty("--bg", typo.color_bg);
+      if (typo.color_fg) root.setProperty("--fg", typo.color_fg);
+      if (typo.color_accent) root.setProperty("--accent", typo.color_accent);
+      if (typo.font_size_base) root.setProperty("--fs-base", typo.font_size_base + "px");
+      if (typo.font_size_hero) root.setProperty("--fs-hero", typo.font_size_hero + "vw");
+    }
+
     // ── MAIN LOGO ──
     var logo = loadJSON("/_data/logo_main.json");
     if (logo && logo.logo_image) {
@@ -94,8 +154,7 @@
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a href="#top" class="nav__logo" aria-label="Marvelous Group">
-    <span class="nav__bracket">[</span>M<span class="nav__bracket">]</span>
-    <span class="nav__logo-word">MARVELOUS&nbsp;GROUP</span>
+    <span class="nav__logo-text">[M] MARVELOUS&nbsp;GROUP</span>
   </a>
   <div class="nav__links">
     <a href="#ecosystem">Агентства</a>
@@ -312,8 +371,7 @@
 <footer class="footer">
   <div class="footer__top">
     <div class="footer__logo">
-      <span class="nav__bracket">[</span>M<span class="nav__bracket">]</span>
-      MARVELOUST&nbsp;GROUP
+      [M] MARVELOUS&nbsp;GROUP
     </div>
     <div class="footer__lede">
       Креативная экосистема.<br>Москва · 2026

@@ -63,12 +63,13 @@ img,svg{display:block;max-width:100%}
   -webkit-backdrop-filter: blur(8px);
 }
 .nav__logo{
-  display:flex; align-items:baseline; gap:8px;
+  display:flex; align-items:baseline; gap:6px;
   font-family:var(--display);
   font-weight:600; font-size:15px; letter-spacing:.02em;
 }
-.nav__bracket{color:var(--fg-dim); font-weight:400}
-.nav__logo-word{ font-size:12px; letter-spacing:.22em; color:var(--fg-dim); margin-left:8px;}
+.nav__bracket{color:var(--fg-dim); font-weight:600; letter-spacing:0;}
+.nav__logo-text{font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:.02em; color:var(--fg);}
+.nav__logo-word{ font-size:15px; letter-spacing:.02em; font-weight:600; color:var(--fg); margin-left:2px;}
 .nav__links{display:flex;gap:28px}
 .nav__links a{
   font-family:var(--mono);

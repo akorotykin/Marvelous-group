@@ -10,6 +10,78 @@ locale: "ru"
 
 collections:
 
+
+  # ─── БЕГУЩАЯ СТРОКА ─────────────────────────────────────────────
+  - name: "ticker"
+    label: "📢 Бегущая строка"
+    files:
+      - name: "ticker"
+        label: "Слова в бегущей строке"
+        file: "_data/ticker.json"
+        fields:
+          - label: "Элементы строки"
+            name: "items"
+            widget: "list"
+            hint: "Каждый пункт — одно слово или фраза. Разделители ● добавляются автоматически."
+            field: { label: "Текст", name: "item", widget: "string" }
+
+  # ─── ССЫЛКИ И ФОРМА ─────────────────────────────────────────────
+  - name: "links"
+    label: "🔗 Ссылки и форма обратной связи"
+    files:
+      - name: "links"
+        label: "Настройки ссылок и формы"
+        file: "_data/links.json"
+        fields:
+          - label: "📧 Куда отправлять бриф (email)"
+            name: "form_email"
+            widget: "string"
+            default: "hello@marvelous.group"
+            hint: "На этот email будут приходить заявки с формы на сайте"
+          - label: "🔗 Ссылки на сайты агентств"
+            name: "agency_links"
+            widget: "list"
+            fields:
+              - { label: "Агентство", name: "name", widget: "string" }
+              - { label: "Ссылка на сайт", name: "url", widget: "string", hint: "Например: https://m-agency.ru" }
+
+  # ─── ШРИФТЫ И СТИЛИ ─────────────────────────────────────────────
+  - name: "typography"
+    label: "🎨 Шрифты и цвета"
+    files:
+      - name: "typography"
+        label: "Настройки шрифтов и цветов"
+        file: "_data/typography.json"
+        fields:
+          - label: "Основной цвет фона"
+            name: "color_bg"
+            widget: "string"
+            default: "#0A0A0A"
+            hint: "HEX цвет, например #0A0A0A"
+          - label: "Основной цвет текста"
+            name: "color_fg"
+            widget: "string"
+            default: "#F5F5F2"
+          - label: "Акцентный цвет"
+            name: "color_accent"
+            widget: "string"
+            default: "#F5F5F2"
+          - label: "Размер основного текста (px)"
+            name: "font_size_base"
+            widget: "number"
+            default: 16
+            value_type: "int"
+            min: 12
+            max: 22
+          - label: "Размер заголовков Hero (vw)"
+            name: "font_size_hero"
+            widget: "number"
+            default: 13
+            value_type: "int"
+            min: 6
+            max: 20
+            hint: "В единицах vw (процент от ширины экрана)"
+
   # ─── ЛОГОТИПЫ ───────────────────────────────────────────────────
   - name: "logos"
     label: "🖼️ Логотипы"
