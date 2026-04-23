@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MARVELOUS GROUP — креативная экосистема</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk, sans-serif' font-weight='600' font-size='18' fill='%23F5F5F2' text-anchor='middle'%3E%5BM%5D%3C/text%3E%3C/svg%3E" />
+
+<script>
+// CMS main logo loader
+(function() {
+  try {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/_data/logo_main.json", false);
+    xhr.send();
+    if (xhr.status === 200) {
+      var data = JSON.parse(xhr.responseText);
+      if (data && data.logo_image) {
+        document.addEventListener("DOMContentLoaded", function() {
+          // Replace nav logo text with image
+          var navLogo = document.querySelector(".nav__logo");
+          if (navLogo) {
+            navLogo.innerHTML = '<img src="' + data.logo_image + '" alt="' + (data.logo_alt || "MARVELOUS GROUP") + '" style="height:32px;object-fit:contain;" />';
+          }
+          // Replace footer logo
+          var footerLogo = document.querySelector(".footer__logo");
+          if (footerLogo) {
+            footerLogo.innerHTML = '<img src="' + data.logo_image + '" alt="' + (data.logo_alt || "MARVELOUS GROUP") + '" style="height:28px;object-fit:contain;" />';
+          }
+        });
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#top" class="nav__logo" aria-label="Marvelous Group">
+    <span class="nav__bracket">[</span>M<span class="nav__bracket">]</span>
+    <span class="nav__logo-word">MARVELOUS&nbsp;GROUP</span>
+  </a>
+  <div class="nav__links">
+    <a href="#ecosystem">Агентства</a>
+    <a href="#about">О группе</a>
+    <a href="#contacts">Контакты</a>
+  </div>
+  <a href="#contacts" class="nav__cta">
+    <span>Связаться</span>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.3"/></svg>
+  </a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__grain"></div>
+  <div class="hero__meta">
+    <span class="mono">MSK · 2026 — ∞</span>
+    <span class="mono hero__meta-dot">●</span>
+    <span class="mono">8 AGENCIES / 1 GROUP</span>
+  </div>
+
+  <h1 class="hero__title">
+    <span class="hero__title-row" data-reveal>
+      <span class="hero__bracket">[</span>креативная<span class="hero__bracket">]</span>
+    </span>
+    <span class="hero__title-row hero__title-row--big" data-reveal style="--d:.15s">
+      экосистема
+    </span>
+    <span class="hero__title-row hero__title-row--mega" data-reveal style="--d:.3s">
+      MARVELOUS <span class="hero__amp">×</span> GROUP
+    </span>
+  </h1>
+
+  <div class="hero__foot">
+    <p class="hero__lede" data-reveal style="--d:.5s">
+      Восемь независимых агентств под одной крышей. Стратегия, креатив, медиа,
+      события, инфлюенс-маркетинг, искусство, гейминг — полный спектр компетенций
+      для брендов, которым важен результат и форма.
+    </p>
+    <a href="#ecosystem" class="hero__scroll">
+      <span class="mono">SCROLL</span>
+      <svg width="12" height="40" viewBox="0 0 12 40" fill="none"><path d="M6 0V38M6 38L1 33M6 38L11 33" stroke="currentColor" stroke-width="1"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>BRAND BUILDING</span><span>●</span>
+    <span>СТРАТЕГИЯ</span><span>●</span>
+    <span>EVENTS</span><span>●</span>
+    <span>SMM</span><span>●</span>
+    <span>АРТ-МАРКЕТПЛЕЙС</span><span>●</span>
+    <span>АЙДЕНТИКА</span><span>●</span>
+    <span>GAMING</span><span>●</span>
+    <span>DIGITAL MEDIA</span><span>●</span>
+    <span>INFLUENCE</span><span>●</span>
+    <span>BRAND BUILDING</span><span>●</span>
+    <span>СТРАТЕГИЯ</span><span>●</span>
+    <span>EVENTS</span><span>●</span>
+    <span>SMM</span><span>●</span>
+    <span>АРТ-МАРКЕТПЛЕЙС</span><span>●</span>
+    <span>АЙДЕНТИКА</span><span>●</span>
+    <span>GAMING</span><span>●</span>
+    <span>DIGITAL MEDIA</span><span>●</span>
+    <span>INFLUENCE</span><span>●</span>
+  </div>
+</div>
+
+<!-- ============ ECOSYSTEM GRID ============ -->
+<section class="ecosystem" id="ecosystem">
+  <header class="section-head">
+    <span class="section-head__eyebrow mono">01 / экосистема</span>
+    <h2 class="section-head__title" data-reveal>
+      Восемь агентств.<br>
+      Одна <i>креативная</i> среда.
+    </h2>
+    <p class="section-head__desc" data-reveal style="--d:.15s">
+      Каждое агентство — самостоятельный игрок с собственной экспертизой.
+      Вместе они закрывают любую маркетинговую задачу — от позиционирования
+      до продакшна и последующего размещения.
+    </p>
+  </header>
+
+  <div class="grid" id="agencyGrid"><!-- JS fills --></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <header class="section-head section-head--light">
+    <span class="section-head__eyebrow mono">02 / о группе</span>
+    <h2 class="section-head__title" data-reveal>
+      Мы строим бренды,<br>
+      которые <i>замечают</i>.
+    </h2>
+  </header>
+
+  <div class="about__grid">
+    <div class="about__col" data-reveal>
+      <div class="mono about__label">— миссия</div>
+      <p>
+        Соединять стратегическую точность и авторскую креативную форму.
+        Мы работаем на стыке экспертиз: бренд-маркетинг, медиа, культура
+        и технологии. Это позволяет собирать нестандартные решения под
+        реальные задачи клиента, а не продавать типовые услуги.
+      </p>
+    </div>
+    <div class="about__col" data-reveal style="--d:.1s">
+      <div class="mono about__label">— принцип</div>
+      <p>
+        Восемь агентств — восемь углов зрения. Клиент получает фокус
+        узкого специалиста и горизонт полной экосистемы. Мы собираем
+        команду под задачу, а не подгоняем задачу под штат.
+      </p>
+    </div>
+    <div class="about__col" data-reveal style="--d:.2s">
+      <div class="mono about__label">— подход</div>
+      <p>
+        Любой проект начинается со стратегии и заканчивается измеримым
+        результатом. Между ними — креатив, который запоминают, и продакшн,
+        который не стыдно показать на международных фестивалях.
+      </p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stats__item" data-reveal>
+      <div class="stats__num">8</div>
+      <div class="stats__label mono">агентств в группе</div>
+    </div>
+    <div class="stats__item" data-reveal style="--d:.1s">
+      <div class="stats__num">150<span>+</span></div>
+      <div class="stats__label mono">специалистов</div>
+    </div>
+    <div class="stats__item" data-reveal style="--d:.2s">
+      <div class="stats__num">15</div>
+      <div class="stats__label mono">лет на рынке</div>
+    </div>
+    <div class="stats__item" data-reveal style="--d:.3s">
+      <div class="stats__num">300<span>+</span></div>
+      <div class="stats__label mono">проектов в год</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="contacts" id="contacts">
+  <header class="section-head">
+    <span class="section-head__eyebrow mono">03 / контакты</span>
+    <h2 class="section-head__title" data-reveal>
+      Готовы <i>обсудить</i><br>
+      проект?
+    </h2>
+  </header>
+
+  <div class="contacts__grid">
+    <form class="form" id="contactForm" novalidate>
+      <label class="field">
+        <span class="field__label mono">имя</span>
+        <input type="text" name="name" required placeholder="Как к вам обращаться" />
+      </label>
+      <label class="field">
+        <span class="field__label mono">компания</span>
+        <input type="text" name="company" placeholder="Название компании" />
+      </label>
+      <label class="field field--full">
+        <span class="field__label mono">email или телефон</span>
+        <input type="text" name="contact" required placeholder="hello@brand.com / +7 ___" />
+      </label>
+      <label class="field field--full">
+        <span class="field__label mono">задача</span>
+        <textarea name="brief" rows="4" placeholder="Коротко о проекте: что, для кого, когда"></textarea>
+      </label>
+      <div class="field field--full form__agencies">
+        <span class="field__label mono">интересуют агентства (можно несколько)</span>
+        <div class="chips" id="chips"></div>
+      </div>
+      <button class="btn" type="submit">
+        <span>Отправить бриф</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <div class="form__status mono" id="formStatus"></div>
+    </form>
+
+    <aside class="contacts__info">
+      <div class="contacts__block">
+        <div class="mono contacts__label">— офис</div>
+        <p>Москва, ул. Большая Никитская, 12<br>БЦ «Marvelous», 7&nbsp;этаж</p>
+      </div>
+      <div class="contacts__block">
+        <div class="mono contacts__label">— почта</div>
+        <a href="mailto:hello@marvelous.group">hello@marvelous.group</a><br>
+        <a href="mailto:pr@marvelous.group">pr@marvelous.group</a>
+      </div>
+      <div class="contacts__block">
+        <div class="mono contacts__label">— телефон</div>
+        <a href="tel:+74950000000">+7 (495) 000-00-00</a>
+      </div>
+      <div class="contacts__block">
+        <div class="mono contacts__label">— социальные</div>
+        <div class="contacts__social">
+          <a href="#">TG</a>
+          <a href="#">VK</a>
+          <a href="#">BE</a>
+          <a href="#">IG</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__logo">
+      <span class="nav__bracket">[</span>M<span class="nav__bracket">]</span>
+      MARVELOUST&nbsp;GROUP
+    </div>
+    <div class="footer__lede">
+      Креативная экосистема.<br>Москва · 2026
+    </div>
+  </div>
+  <div class="footer__bot mono">
+    <span>© MARVELOUS GROUP, 2014—2026</span>
+    <span>все права защищены</span>
+    <span>made with care in MSK</span>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__panel" role="document">
+    <button class="modal__close" data-close aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path d="M2 2L16 16M16 2L2 16" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="agencies.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

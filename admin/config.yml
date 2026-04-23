@@ -1,0 +1,203 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads/logos"
+public_folder: "/uploads/logos"
+
+locale: "ru"
+
+collections:
+
+  # ─── ЛОГОТИПЫ ───────────────────────────────────────────────────
+  - name: "logos"
+    label: "🖼️ Логотипы"
+    files:
+
+      - name: "main_logo"
+        label: "🔷 Логотип группы (главный)"
+        file: "_data/logo_main.json"
+        fields:
+          - label: "Логотип (PNG, SVG, JPG)"
+            name: "logo_image"
+            widget: "image"
+            allow_multiple: false
+            hint: "Рекомендуем SVG или PNG с прозрачным фоном. Размер: не менее 300px по ширине."
+          - label: "Альтернативный текст (для SEO)"
+            name: "logo_alt"
+            widget: "string"
+            default: "MARVELOUS GROUP"
+
+      - name: "agency_logos"
+        label: "🏛️ Логотипы агентств"
+        file: "_data/logo_agencies.json"
+        fields:
+          - label: "[M] Agency — логотип"
+            name: "logo_m"
+            widget: "image"
+            required: false
+            hint: "PNG/SVG с прозрачным фоном"
+          - label: "NOW Events — логотип"
+            name: "logo_now"
+            widget: "image"
+            required: false
+          - label: "Cartel Social — логотип"
+            name: "logo_cartel"
+            widget: "image"
+            required: false
+          - label: "Bizar Market — логотип"
+            name: "logo_bizar"
+            widget: "image"
+            required: false
+          - label: "Московский Шик — логотип"
+            name: "logo_shik"
+            widget: "image"
+            required: false
+          - label: "Teammate Gaming — логотип"
+            name: "logo_teammate"
+            widget: "image"
+            required: false
+          - label: "Reach Ninja — логотип"
+            name: "logo_reachninja"
+            widget: "image"
+            required: false
+          - label: "A+I AI Influencers — логотип"
+            name: "logo_ai"
+            widget: "image"
+            required: false
+
+  # ─── ГЛАВНАЯ СТРАНИЦА ───────────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Главная страница"
+    files:
+
+      - name: "contacts"
+        label: "📞 Контакты и адрес"
+        file: "_data/contacts.json"
+        fields:
+          - { label: "Адрес офиса (строка 1)", name: "address1", widget: "string", default: "Москва, ул. Большая Никитская, 12" }
+          - { label: "Адрес офиса (строка 2)", name: "address2", widget: "string", default: "БЦ «Marvelous», 7 этаж" }
+          - { label: "Email (основной)", name: "email1", widget: "string", default: "hello@marvelous.group" }
+          - { label: "Email (PR)", name: "email2", widget: "string", default: "pr@marvelous.group" }
+          - { label: "Телефон", name: "phone", widget: "string", default: "+7 (495) 000-00-00" }
+          - { label: "Ссылка Telegram", name: "tg", widget: "string", default: "#" }
+          - { label: "Ссылка VK", name: "vk", widget: "string", default: "#" }
+          - { label: "Ссылка Behance", name: "be", widget: "string", default: "#" }
+          - { label: "Ссылка Instagram", name: "ig", widget: "string", default: "#" }
+
+      - name: "hero"
+        label: "🏠 Главный экран (Hero)"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Метка города и года (напр: MSK · 2026 — ∞)", name: "meta_city", widget: "string", default: "MSK · 2026 — ∞" }
+          - { label: "Метка агентств (напр: 8 AGENCIES / 1 GROUP)", name: "meta_agencies", widget: "string", default: "8 AGENCIES / 1 GROUP" }
+          - { label: "Заголовок строка 1", name: "title1", widget: "string", default: "[креативная]" }
+          - { label: "Заголовок строка 2", name: "title2", widget: "string", default: "экосистема" }
+          - { label: "Заголовок строка 3", name: "title3", widget: "string", default: "MARVELOUS × GROUP" }
+          - { label: "Описание под заголовком", name: "lede", widget: "text", default: "Восемь независимых агентств под одной крышей. Стратегия, креатив, медиа, события, инфлюенс-маркетинг, искусство, гейминг — полный спектр компетенций для брендов, которым важен результат и форма." }
+
+      - name: "about"
+        label: "🏢 О группе"
+        file: "_data/about.json"
+        fields:
+          - { label: "Заголовок раздела", name: "title", widget: "string", default: "Мы строим бренды, которые замечают." }
+          - { label: "Блок «Миссия»", name: "mission", widget: "text", default: "Соединять стратегическую точность и авторскую креативную форму. Мы работаем на стыке экспертиз: бренд-маркетинг, медиа, культура и технологии." }
+          - { label: "Блок «Принцип»", name: "principle", widget: "text", default: "Восемь агентств — восемь углов зрения. Клиент получает фокус узкого специалиста и горизонт полной экосистемы." }
+          - { label: "Блок «Подход»", name: "approach", widget: "text", default: "Любой проект начинается со стратегии и заканчивается измеримым результатом. Между ними — креатив, который запоминают, и продакшн, который не стыдно показать на международных фестивалях." }
+          - { label: "Цифра: агентств", name: "stat_agencies", widget: "string", default: "8" }
+          - { label: "Цифра: специалистов", name: "stat_people", widget: "string", default: "150+" }
+          - { label: "Цифра: лет на рынке", name: "stat_years", widget: "string", default: "15" }
+          - { label: "Цифра: проектов в год", name: "stat_projects", widget: "string", default: "300+" }
+
+  # ─── АГЕНТСТВА ──────────────────────────────────────────────────
+  - name: "agencies"
+    label: "🏛️ Агентства"
+    files:
+
+      - name: "m_agency"
+        label: "01 · [M] Agency (Флагман)"
+        file: "_data/agency_m.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "M AGENCY" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "flagship" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Креатив, стратегия, рекламные кампании, brand building" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "now_agency"
+        label: "02 · NOW Events (Ивенты)"
+        file: "_data/agency_now.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "NOW EVENTS" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "events" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Ивенты, партнёрские интеграции, маркетинговые коммуникации" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "cartel_agency"
+        label: "03 · Cartel Social (SMM)"
+        file: "_data/agency_cartel.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "CARTEL SOCIAL" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "smm" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "SMM, аудит соцсетей, контент-план, стратегии, спецпроекты" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "bizar_agency"
+        label: "04 · Bizar Market (Арт)"
+        file: "_data/agency_bizar.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "BIZAR MARKET" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "art" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Маркетплейс современного искусства" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "shik_agency"
+        label: "05 · Московский Шик (Брендинг)"
+        file: "_data/agency_shik.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "МОСКОВСКИЙ ШИК" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "branding" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Брендинг, айдентика, разработка визуального стиля" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "teammate_agency"
+        label: "06 · Teammate Gaming (Гейминг)"
+        file: "_data/agency_teammate.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "TEAMMATE GAMING" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "gaming" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Креативные кампании и стратегии на территории гейминга и киберспорта" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "reachninja_agency"
+        label: "07 · Reach Ninja (Digital)"
+        file: "_data/agency_reachninja.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "REACH NINJA" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "digital" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Digital-медиа агентство, спецпроекты, блогеры" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
+
+      - name: "ai_agency"
+        label: "08 · A+I AI Influencers (AI)"
+        file: "_data/agency_ai.json"
+        fields:
+          - { label: "Полное название", name: "nameFull", widget: "string", default: "A+I · AI INFLUENCERS" }
+          - { label: "Тег (короткий)", name: "tag", widget: "string", default: "ai" }
+          - { label: "Слоган (одна строка)", name: "tagline", widget: "string", default: "Цифровые инфлюенсеры и аватары" }
+          - { label: "Краткое описание (для карточки)", name: "desc", widget: "text" }
+          - { label: "О агентстве (абзац 1)", name: "about1", widget: "text" }
+          - { label: "О агентстве (абзац 2)", name: "about2", widget: "text" }
