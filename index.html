@@ -10,31 +10,82 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='Space Grotesk, sans-serif' font-weight='600' font-size='18' fill='%23F5F5F2' text-anchor='middle'%3E%5BM%5D%3C/text%3E%3C/svg%3E" />
 
+
+
 <script>
-// CMS main logo loader
+// ── CMS Data Loader ─────────────────────────────────────────────
+// Loads JSON files saved by CMS and updates page content
 (function() {
-  try {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/_data/logo_main.json", false);
-    xhr.send();
-    if (xhr.status === 200) {
-      var data = JSON.parse(xhr.responseText);
-      if (data && data.logo_image) {
-        document.addEventListener("DOMContentLoaded", function() {
-          // Replace nav logo text with image
-          var navLogo = document.querySelector(".nav__logo");
-          if (navLogo) {
-            navLogo.innerHTML = '<img src="' + data.logo_image + '" alt="' + (data.logo_alt || "MARVELOUS GROUP") + '" style="height:32px;object-fit:contain;" />';
-          }
-          // Replace footer logo
-          var footerLogo = document.querySelector(".footer__logo");
-          if (footerLogo) {
-            footerLogo.innerHTML = '<img src="' + data.logo_image + '" alt="' + (data.logo_alt || "MARVELOUS GROUP") + '" style="height:28px;object-fit:contain;" />';
-          }
-        });
-      }
+  function loadJSON(url) {
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);
+      xhr.send();
+      if (xhr.status === 200) return JSON.parse(xhr.responseText);
+    } catch(e) {}
+    return null;
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // ── HERO ──
+    var hero = loadJSON("/_data/hero.json");
+    if (hero) {
+      var metaItems = document.querySelectorAll(".hero__meta .mono");
+      if (metaItems[0]) metaItems[0].textContent = hero.meta_city;
+      if (metaItems[2]) metaItems[2].textContent = hero.meta_agencies;
+      var rows = document.querySelectorAll(".hero__title-row");
+      if (rows[0]) rows[0].innerHTML = hero.title1;
+      if (rows[1]) rows[1].textContent = hero.title2;
+      if (rows[2]) rows[2].innerHTML = hero.title3;
+      var lede = document.querySelector(".hero__lede");
+      if (lede) lede.textContent = hero.lede;
     }
-  } catch(e) {}
+
+    // ── ABOUT ──
+    var about = loadJSON("/_data/about.json");
+    if (about) {
+      var aboutTitle = document.querySelector(".about .section-head__title");
+      if (aboutTitle) aboutTitle.innerHTML = about.title;
+      var cols = document.querySelectorAll(".about__col p");
+      if (cols[0]) cols[0].textContent = about.mission;
+      if (cols[1]) cols[1].textContent = about.principle;
+      if (cols[2]) cols[2].textContent = about.approach;
+      var nums = document.querySelectorAll(".stats__num");
+      var labels = document.querySelectorAll(".stats__label");
+      if (nums[0]) nums[0].textContent = about.stat_agencies;
+      if (nums[1]) nums[1].innerHTML = about.stat_people;
+      if (nums[2]) nums[2].textContent = about.stat_years;
+      if (nums[3]) nums[3].innerHTML = about.stat_projects;
+    }
+
+    // ── CONTACTS ──
+    var c = loadJSON("/_data/contacts.json");
+    if (c) {
+      var addrEl = document.querySelector(".contacts__block p");
+      if (addrEl) addrEl.innerHTML = c.address1 + "<br>" + c.address2;
+      var emails = document.querySelectorAll(".contacts__block a[href^='mailto']");
+      if (emails[0]) { emails[0].href = "mailto:" + c.email1; emails[0].textContent = c.email1; }
+      if (emails[1]) { emails[1].href = "mailto:" + c.email2; emails[1].textContent = c.email2; }
+      var phone = document.querySelector(".contacts__block a[href^='tel']");
+      if (phone) { phone.href = "tel:" + c.phone.replace(/[^+\d]/g,""); phone.textContent = c.phone; }
+      var social = document.querySelectorAll(".contacts__social a");
+      if (social[0] && c.tg)  social[0].href = c.tg;
+      if (social[1] && c.vk)  social[1].href = c.vk;
+      if (social[2] && c.be)  social[2].href = c.be;
+      if (social[3] && c.ig)  social[3].href = c.ig;
+    }
+
+    // ── MAIN LOGO ──
+    var logo = loadJSON("/_data/logo_main.json");
+    if (logo && logo.logo_image) {
+      var navLogo = document.querySelector(".nav__logo");
+      if (navLogo) navLogo.innerHTML = '<img src="' + logo.logo_image + '" alt="' + logo.logo_alt + '" style="height:32px;object-fit:contain;" />';
+      var footerLogo = document.querySelector(".footer__logo");
+      if (footerLogo) footerLogo.innerHTML = '<img src="' + logo.logo_image + '" alt="' + logo.logo_alt + '" style="height:28px;object-fit:contain;" />';
+    }
+
+  });
 })();
 </script>
 </head>
