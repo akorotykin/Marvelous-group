@@ -1,15 +1,47 @@
 {
   "form_action": "",
   "form_type": "email",
-  "form_email": "hello@marvelous.group",
+  "form_email": "Friends@marvelous.ru",
   "agency_links": [
-    { "id": "m", "name": "M AGENCY", "url": "" },
-    { "id": "now", "name": "NOW EVENTS", "url": "" },
-    { "id": "cartel", "name": "CARTEL SOCIAL", "url": "" },
-    { "id": "bizar", "name": "BIZAR MARKET", "url": "" },
-    { "id": "shik", "name": "МОСКОВСКИЙ ШИК", "url": "" },
-    { "id": "teammate", "name": "TEAMMATE GAMING", "url": "" },
-    { "id": "reachninja", "name": "REACH NINJA", "url": "" },
-    { "id": "ai", "name": "A+I AI INFLUENCERS", "url": "" }
+    {
+      "id": "m",
+      "name": "MARVELOUS AGENCY",
+      "url": " https://marvelous.ru"
+    },
+    {
+      "id": "now",
+      "name": "N:OW EVENTS",
+      "url": "https://now-agency.ru/"
+    },
+    {
+      "id": "cartel",
+      "name": "CARTEL",
+      "url": "https://www.cartel.promo/"
+    },
+    {
+      "id": "bizar",
+      "name": "BIZAR MARKET",
+      "url": "Bizar.art"
+    },
+    {
+      "id": "shik",
+      "name": "МОСКОВСКИЙ ШИК",
+      "url": "https://shik.moscow/"
+    },
+    {
+      "id": "teammate",
+      "name": "TEAMMATE GAMING",
+      "url": "https://teammate-agency.ru/"
+    },
+    {
+      "id": "reachninja",
+      "name": "REACH NINJA",
+      "url": "https://reachninja.ru/"
+    },
+    {
+      "id": "ai",
+      "name": "AI INFLUENCERS",
+      "url": "https://aiinfluence.ru/"
+    }
   ]
 }
